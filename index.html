@@ -18,8 +18,9 @@
       var aviso = document.createElement('div');
       aviso.setAttribute('style', 'position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:24px;background:#0b0a09;color:#f4f1ec;font:16px/1.6 system-ui,sans-serif');
       aviso.innerHTML = '<div style="max-width:560px"><h1 style="margin:0 0 12px;font-size:28px">Este arquivo é o código-fonte</h1>'
-        + '<p>Aberto direto do disco, o navegador bloqueia os scripts do projeto. Para ver o site:</p>'
-        + '<p><b>Sem instalar nada:</b> abra <code>dist/index.html</code> (gerado por <code>npm run build</code>).</p>'
+        + '<p>Aberto direto do disco, o navegador bloqueia os scripts do projeto. O site pronto fica em <code>dist/index.html</code>:</p>'
+        + '<p><a href="dist/index.html" style="display:inline-block;margin:8px 0 16px;padding:14px 22px;border-radius:4px;background:#f26a1b;color:#fff;font-weight:700;text-decoration:none">Abrir o site</a></p>'
+        + '<p><b>Se o botão não abrir nada:</b> a pasta <code>dist</code> ainda não existe. Rode <code>npm install</code> e <code>npm run build</code> na pasta do projeto.</p>'
         + '<p><b>Para editar:</b> rode <code>npm install</code> e <code>npm run dev</code> na pasta do projeto e abra o endereço que aparecer.</p></div>';
       document.body.appendChild(aviso);
     });

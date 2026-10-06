@@ -108,13 +108,13 @@ export function criarCoreografia({ objetos, paineis, estado, retrato }) {
     tl.to(obj.rotation, { x: 0.15, y: 0.4, z: 0.1, duration: 0.8, ease: 'power3.out' }, t);
   });
   tl.to(estado, { flutuar: 1, duration: 0.4 }, 4.9);
-  sair(paineis.pilha, 5.4);
+  sair(paineis.pilha, 5.05);
 
   // 4. Balcão de inox, a caixa sobe e cada item para em cima do seu compartimento.
   tl.to(estado.fundo, { ...rgb(CORES.inox), duration: 0.8 }, 5.6);
   tl.to(estado, { opBalcao: 1, flutuar: 0, inclinar: 0, duration: 0.8 }, 5.6);
-  tl.set(caixa, { visible: true }, 5.6);
-  tl.to(caixa.position, { y: 0, duration: 0.9, ease: 'power3.out' }, 5.6);
+  tl.set(caixa, { visible: true }, 5.75);
+  tl.to(caixa.position, { y: 0, duration: 0.8, ease: 'power3.out' }, 5.75);
   enquadrar(Q.caixaAberta, 5.6, 1);
   const pairar = (obj, lugar, altura, tempo) => {
     ir(obj.position, [lugar.x, altura, lugar.z], tempo, { duration: 0.7 });

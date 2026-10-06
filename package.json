@@ -1,7 +1,14 @@
 {
   "name": "landing-hamburgueria",
   "private": true,
-  "version": "2.0.0",
+  "version": "1.0.0",
+  "description": "Landing page 3D de hamburgueria com three.js e GSAP: o hambúrguer gira, explode em camadas e cai na caixa conforme a rolagem.",
+  "license": "MIT",
+  "homepage": "https://333xandelz.github.io/landing-hamburgueria/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/333xandelz/landing-hamburgueria.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

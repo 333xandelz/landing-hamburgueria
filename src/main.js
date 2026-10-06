@@ -3,12 +3,15 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import CONFIG from './config.js';
+import logo from './logo.svg';
 import { escapar } from './ui/util.js';
 import { montarCardapio } from './ui/cardapio.js';
 import { criarSacola } from './ui/sacola.js';
 
 gsap.registerPlugin(ScrollTrigger);
 document.documentElement.classList.add('js-ok');
+// O Vite não embute o ícone da aba; aplicado por aqui, ele vai junto no arquivo único do build.
+document.querySelector('[data-icone]')?.setAttribute('href', logo);
 
 const $ = (seletor) => document.querySelector(seletor);
 const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

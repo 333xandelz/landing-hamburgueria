@@ -10,6 +10,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Este index.html é o código-fonte: aberto direto do disco, o navegador bloqueia os módulos
+    // e a página fica sem estilo. Em vez da página quebrada, mostra como abrir o site.
+    window.addEventListener('load', function () {
+      if (document.documentElement.classList.contains('js-ok')) return;
+      var aviso = document.createElement('div');
+      aviso.setAttribute('style', 'position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:24px;background:#0b0a09;color:#f4f1ec;font:16px/1.6 system-ui,sans-serif');
+      aviso.innerHTML = '<div style="max-width:560px"><h1 style="margin:0 0 12px;font-size:28px">Este arquivo é o código-fonte</h1>'
+        + '<p>Aberto direto do disco, o navegador bloqueia os scripts do projeto. Para ver o site:</p>'
+        + '<p><b>Sem instalar nada:</b> abra <code>dist/index.html</code> (gerado por <code>npm run build</code>).</p>'
+        + '<p><b>Para editar:</b> rode <code>npm install</code> e <code>npm run dev</code> na pasta do projeto e abra o endereço que aparecer.</p></div>';
+      document.body.appendChild(aviso);
+    });
+  </script>
 </head>
 <body>
   <header class="topo">

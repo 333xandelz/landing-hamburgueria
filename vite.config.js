@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite';
+import { viteSingleFile } from 'vite-plugin-singlefile';
 
-// base relativa: o build funciona em qualquer subpasta (GitHub Pages, Netlify, servidor próprio).
+// O build sai num único dist/index.html, com JS e CSS embutidos: abre com dois cliques
+// (sem servidor) e também funciona em qualquer hospedagem estática ou subpasta.
 export default defineConfig({
   base: './',
-  build: { chunkSizeWarningLimit: 1200 }
+  plugins: [viteSingleFile()],
+  build: { chunkSizeWarningLimit: 1500 }
 });

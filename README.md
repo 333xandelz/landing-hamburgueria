@@ -37,9 +37,13 @@ Precisa de [Node.js](https://nodejs.org) 20.19 ou 22.12 em diante (exigência do
 ```bash
 npm install
 npm run dev        # abre em http://localhost:5173
-npm run build      # gera a pasta dist/, pronta para qualquer hospedagem estática
+npm run build      # gera dist/index.html, um arquivo só com tudo dentro
 npm run preview    # serve o dist/ para conferir o build
 ```
+
+O `dist/index.html` abre com **dois cliques**, sem servidor, e é o arquivo mais fácil de
+mandar para alguém ver. O `index.html` da raiz é o código-fonte: aberto direto do disco, o
+navegador bloqueia os scripts, e por isso ele mostra um aviso explicando como abrir o site.
 
 ## Como personalizar
 

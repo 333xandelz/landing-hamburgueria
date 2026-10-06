@@ -8,6 +8,7 @@ import { montarCardapio } from './ui/cardapio.js';
 import { criarSacola } from './ui/sacola.js';
 
 gsap.registerPlugin(ScrollTrigger);
+document.documentElement.classList.add('js-ok');
 
 const $ = (seletor) => document.querySelector(seletor);
 const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

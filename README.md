@@ -1,98 +1,122 @@
-# Landing page de hamburgueria (modelo)
+# Landing page 3D de hamburgueria (modelo)
 
-Modelo de página única para hamburgueria, com tema de basquete, animação de rolagem e cardápio
-montado a partir de um arquivo de configuração. É HTML, CSS e JavaScript puros: não tem build,
-não tem dependência e abre com dois cliques no `index.html`.
+Modelo de página única para hamburgueria, com tema de basquete e uma cena **3D em tempo real**
+conduzida pela rolagem: o hambúrguer levanta do papel manteiga, gira, explode camada por
+camada, os acompanhamentos chegam voando, tudo cai dentro da caixa de entrega e a tampa fecha.
+Depois vem o cardápio, com sacola de pedido que fecha pelo WhatsApp.
 
-![Topo da página](docs/previa-topo.jpg)
+![Topo](docs/1-topo.jpg)
 
-| The Stack (abre camada por camada ao rolar) | Cardápio | Celular |
+| The Stack | Acompanhamentos | Game Day Combo |
 |---|---|---|
-| ![Pilha](docs/previa-pilha.jpg) | ![Cardápio](docs/previa-cardapio.jpg) | ![Celular](docs/previa-celular.jpg) |
+| ![Pilha](docs/2-pilha.jpg) | ![Acompanhamentos](docs/3-acompanhamentos.jpg) | ![Combo](docs/4-combo.jpg) |
+| **Overtime Shakes** | **The Lineup** | **Celular** |
+| ![Caixa fechada](docs/5-caixa-fechada.jpg) | ![Cardápio](docs/6-cardapio.jpg) | ![Celular](docs/7-celular-topo.jpg) |
 
-## O que tem na página
+## O que a página faz
 
-1. **Topo** com logo, menu e botão de pedido fixo.
-2. **Hero** escuro com o título "Build like an All-Star." entrando linha por linha e o hambúrguer flutuando sobre o papel manteiga.
-3. **The Stack**: a seção fica presa na tela e o hambúrguer se desmonta conforme a rolagem, com o nome de cada camada.
-4. **Game Day Combo**: caixa de entrega aberta com hambúrguer, fritas, molhos e milkshake.
-5. **Overtime Shakes**: a caixa fechada com a marca.
-6. **Cardápio** em grade, com preço por tamanho e botão de pedido em cada item.
-7. **Faixa** com texto gigante correndo, **endereço e contato**, e rodapé.
+| Parte | O que acontece |
+|---|---|
+| Topo | Hambúrguer 3D girando sozinho sobre o papel manteiga, numa mesa de madeira. Com o mouse, **arraste para girar**. |
+| Smashed to order | Ao rolar, ele levanta, dá uma volta inteira e começa a se separar. |
+| The Stack | O fundo clareia e a pilha abre com o nome de cada camada. **Passe o mouse numa camada** para destacá-la. |
+| Acompanhamentos | A pilha se fecha e fritas, molhos e milkshake chegam voando, flutuando em volta. |
+| Game Day Combo | Balcão de inox, a caixa sobe e cada item cai no seu compartimento (o hambúrguer amassa um pouco ao cair). |
+| Overtime Shakes | A tampa fecha e a câmera mostra a caixa de frente. |
+| The Lineup | Painel claro sobe por cima da cena com o cardápio. As fotos dos itens são renderizadas dos mesmos modelos 3D. |
+| Sacola | Botão **+** em cada tamanho, a miniatura voa até a sacola, e o pedido fecha numa mensagem pronta do WhatsApp. |
 
-Todas as imagens são ilustrações SVG desenhadas em código (`js/arte/`). Não há foto de
-terceiro no repositório, então não há licença de imagem para resolver antes de compartilhar.
+Tudo é desenhado em código (geometria, texturas em canvas, luz, sombra e reflexo): **não há
+foto, modelo 3D nem imagem de terceiro no repositório**, então não há licença de imagem para
+resolver antes de compartilhar.
 
-## Como abrir
+## Como rodar
 
-- Dois cliques no `index.html`, ou
-- um servidor local qualquer na pasta, por exemplo `npx serve .` ou `python -m http.server`.
+Precisa de [Node.js](https://nodejs.org) 20.19 ou 22.12 em diante (exigência do Vite 8).
 
-As fontes (Anton e Inter) vêm do Google Fonts. Sem internet, a página usa as fontes do sistema.
+```bash
+npm install
+npm run dev        # abre em http://localhost:5173
+npm run build      # gera a pasta dist/, pronta para qualquer hospedagem estática
+npm run preview    # serve o dist/ para conferir o build
+```
 
 ## Como personalizar
 
-Quase tudo o que muda de uma hamburgueria para outra está em **`js/config.js`**:
+Quase tudo o que muda de uma hamburgueria para outra está em **`src/config.js`**:
 
 | Campo | O que controla |
 |---|---|
-| `marca.nome` | nome no topo, no hero, no título da aba e no rodapé |
-| `marca.caixaLinha1`, `marca.caixaLinha2` | as duas linhas impressas nas caixas de entrega (a primeira se ajusta sozinha à largura) |
-| `marca.slogan` | frase da caixa e do rodapé |
-| `pedido.url` | destino de **todos** os botões "Order now": link do WhatsApp, iFood, site de pedidos |
+| `marca.nome` | nome no topo, no título da aba e no rodapé |
+| `marca.caixaLinha1`, `marca.caixaLinha2`, `marca.slogan` | o que vem impresso na caixa 3D (a linha 1 encolhe sozinha para caber) |
+| `pedido.whatsapp` | número com DDI e DDD, só dígitos (ex.: `5511999999999`): a sacola fecha o pedido no WhatsApp |
+| `pedido.url` | destino do checkout quando não há WhatsApp (iFood, site de pedidos) |
 | `contato` | endereço, horário, telefone e e-mail |
 | `moeda` | formato dos preços; para real use `{ locale: 'pt-BR', codigo: 'BRL' }` |
-| `pilha` | as camadas da seção The Stack, de cima para baixo, com os rótulos |
-| `cardapio` | os itens: nome, descrição, ilustração e lista de preços |
+| `pilha` | as camadas do hambúrguer da cena, de cima para baixo, com os rótulos |
+| `cardapio` | os itens: nome, descrição, ilustração 3D e preços por tamanho |
 
-Camadas de hambúrguer disponíveis: `pao-topo`, `molho`, `alface`, `tomate`, `cebola`, `bacon`,
-`picles`, `queijo`, `carne`, `pao-base`. Ilustrações de cardápio: `hamburguer` (com as camadas
-que você listar), `combo`, `fritas`, `batata-recheada` e `milkshake` (sabor `chocolate`,
-`morango` ou `baunilha`).
+Camadas disponíveis: `pao-topo`, `molho`, `alface`, `tomate`, `cebola`, `bacon`, `picles`,
+`queijo`, `carne`, `pao-base`. Ilustrações do cardápio: `hamburguer` (com as camadas que você
+listar), `combo`, `fritas`, `batata-recheada` e `milkshake` (sabor `chocolate`, `morango` ou
+`baunilha`); `fundo: 'vermelho'` troca o fundo do cartão.
 
-Os textos das seções (títulos e parágrafos) ficam no `index.html`. As cores e as fontes ficam
-nas variáveis do começo de `css/estilo.css`.
-
-### Trocar ilustração por foto
-
-Em qualquer bloco com `data-ilustracao`, apague o atributo e coloque uma `<img>` dentro. Para
-os cartões do cardápio, troque a chamada `A.item(...)` da função `cartao` em `js/main.js` por
-uma `<img src="...">` com a foto do item.
+Os textos das seções ficam no `index.html`; cores e fontes nas variáveis do começo de
+`src/estilo.css`. Os enquadramentos de câmera e o tempo de cada etapa ficam em
+`src/cena/coreografia.js` (um conjunto para tela deitada e outro para tela em pé).
 
 ## Publicar no GitHub Pages
 
-1. Crie o repositório no GitHub e envie esta pasta.
-2. Em **Settings > Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`.
-3. Em um ou dois minutos a página fica em `https://<usuario>.github.io/<repositorio>/`.
+O repositório já traz o workflow `.github/workflows/pages.yml`, que compila e publica a cada
+push na branch `main`:
 
-Como não há build, qualquer hospedagem de site estático serve (Netlify, Vercel, Cloudflare Pages).
+1. Crie o repositório no GitHub e envie esta pasta.
+2. Em **Settings > Pages**, em **Source**, escolha **GitHub Actions**.
+3. O próximo push (ou **Actions > Publicar no GitHub Pages > Run workflow**) publica em
+   `https://<usuario>.github.io/<repositorio>/`.
+
+O build usa caminhos relativos, então o `dist/` também funciona em Netlify, Vercel, Cloudflare
+Pages ou numa subpasta de qualquer servidor.
 
 ## Estrutura
 
 ```
-index.html            estrutura e textos das seções
-css/estilo.css        visual, animações e versões para tela pequena
-js/config.js          marca, contato, moeda, pilha e cardápio
-js/arte/base.js       utilitários e gradientes das ilustrações
-js/arte/hamburguer.js as camadas do hambúrguer e a montagem da pilha
-js/arte/comida.js     logo, fritas, batata recheada, milkshake e refrigerante
-js/arte/cenas.js      hero, pilha, caixas de entrega e imagens do cardápio
-js/main.js            liga tudo: textos, cardápio, faixa e animações de rolagem
-assets/favicon.svg    ícone da aba
-docs/                 imagens deste README
+index.html                  estrutura e textos das seções
+src/config.js               marca, pedido, contato, moeda, pilha e cardápio
+src/main.js                 liga tudo: textos, cardápio, sacola, rolagem suave e a cena
+src/estilo.css              visual, painéis, cardápio, sacola e versões de tela
+src/cena/iniciar.js         monta a cena e atualiza tudo a cada quadro
+src/cena/coreografia.js     a linha do tempo da rolagem (GSAP ScrollTrigger)
+src/cena/hamburguer.js      as camadas do hambúrguer, modeladas em código
+src/cena/acompanhamentos.js fritas, batata recheada, molhinhos, milkshake e refrigerante
+src/cena/caixa.js           caixa de entrega com compartimentos e tampa articulada
+src/cena/cenario.js         mesa de madeira, papel manteiga e balcão de inox
+src/cena/texturas.js        todas as texturas, desenhadas em canvas
+src/cena/palco.js           renderizador, câmera, luzes e laço de quadros
+src/cena/rotulos.js         rótulos HTML que seguem as camadas 3D
+src/cena/interacao.js       arrastar para girar e destacar a camada sob o mouse
+src/cena/miniaturas.js      fotos do cardápio renderizadas dos modelos
+src/ui/                     cardápio, sacola e utilitários
+.github/workflows/pages.yml publicação automática no GitHub Pages
 ```
 
-## Acessibilidade
+Bibliotecas: [three.js](https://threejs.org) (3D), [GSAP](https://gsap.com) com ScrollTrigger
+(coreografia), [Lenis](https://lenis.darkroom.engineering) (rolagem suave) e
+[Vite](https://vite.dev) (build).
 
-- Respeita `prefers-reduced-motion`: com movimento reduzido, nada anima e a pilha aparece já aberta.
-- As ilustrações têm `aria-label`, e os botões e links têm foco visível pelo teclado.
+## Acessibilidade e desempenho
+
+- Com `prefers-reduced-motion`, a rolagem suave, o giro automático e os balanços desligam; a
+  cena continua seguindo a rolagem, que é comandada pela própria pessoa.
+- Sem WebGL, a página vira uma rolagem comum com os textos de todas as seções.
+- A cena para de desenhar quando o cardápio cobre a tela. A resolução fica limitada a 2x.
 
 ## Origem e licença
 
-O layout foi recriado a partir de um vídeo de demonstração de um site gerado no Emergent
-(seções, ordem, tipografia, cardápio e preços). Nenhum código, imagem ou arquivo do original foi
-copiado: o código e as ilustrações deste repositório são novos. A marca do vídeo, "All Star
-Burgers", é usada por restaurantes reais, por isso este modelo usa um nome fictício,
-"Buzzer Beater Burgers", que se troca no `js/config.js`.
+A coreografia e o layout foram recriados a partir de um vídeo de demonstração de um site gerado
+no Emergent (hambúrguer no papel, a pilha explodida, a queda na caixa, a tampa fechando e o
+cardápio). Nenhum código, imagem ou arquivo do original foi copiado. A marca do vídeo, "All Star
+Burgers", é usada por restaurantes reais; por isso este modelo usa o nome fictício "Buzzer
+Beater Burgers", que se troca no `src/config.js`.
 
 Licença MIT, veja [LICENSE](LICENSE).

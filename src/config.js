@@ -1,21 +1,23 @@
 /*
  * Tudo o que muda de uma hamburgueria para outra mora neste arquivo:
- * marca, link de pedido, contato, moeda, as camadas da seção "The Stack" e o cardápio.
+ * marca, pedido, contato, moeda, as camadas da seção "The Stack" e o cardápio.
  * Os textos das seções ficam no index.html.
  */
-window.CONFIG = Object.freeze({
+export default Object.freeze({
   marca: Object.freeze({
     nome: 'Buzzer Beater Burgers',
-    // As duas linhas impressas na caixa de entrega (seções do combo e dos shakes).
-    caixaLinha1: 'BUZZER★BEATER',
+    // As duas linhas impressas na caixa de entrega 3D.
+    caixaLinha1: 'BUZZER ★ BEATER',
     caixaLinha2: 'BURGERS',
     slogan: 'MADE FRESH. MADE BOLD.'
   }),
 
-  // Destino de todos os botões "Order now": WhatsApp, iFood, site de pedidos ou uma âncora.
+  // Com whatsapp preenchido (só números, com DDI e DDD), a sacola fecha o pedido numa
+  // mensagem pronta no WhatsApp. Vazio, o botão leva para "url" (iFood, site de pedidos).
   pedido: Object.freeze({
+    whatsapp: '',
     url: '#menu',
-    abrirEmNovaAba: false
+    abrirEmNovaAba: true
   }),
 
   contato: Object.freeze({
@@ -30,15 +32,15 @@ window.CONFIG = Object.freeze({
 
   faixa: Object.freeze(['Smash burgers', 'Crispy fries', 'Overtime shakes']),
 
-  // De cima para baixo. Camadas disponíveis: pao-topo, molho, alface, tomate,
-  // cebola, bacon, picles, queijo, carne, pao-base.
+  // De cima para baixo. Camadas: pao-topo, molho, alface, tomate, cebola, bacon,
+  // picles, queijo, carne, pao-base.
   pilha: Object.freeze([
-    { camada: 'pao-topo', rotulo: ['Buttery', 'toasted bun'] },
+    { camada: 'pao-topo', rotulo: ['Buttery', 'toasted brioche'] },
     { camada: 'molho', rotulo: ['Signature', 'house sauce'] },
     { camada: 'cebola', rotulo: ['Caramelized', 'onions'] },
     { camada: 'queijo', rotulo: ['Melted American', 'cheese, 2 slices'] },
-    { camada: 'carne', rotulo: ['Juicy', 'beef patty'] },
-    { camada: 'pao-base', rotulo: ['Toasted', 'bun'] }
+    { camada: 'carne', rotulo: ['Smashed', 'beef patty'] },
+    { camada: 'pao-base', rotulo: ['Toasted', 'bottom bun'] }
   ]),
 
   // ilustracao.tipo: hamburguer (com camadas), combo, fritas, batata-recheada, milkshake.
@@ -49,16 +51,15 @@ window.CONFIG = Object.freeze({
       descricao: 'Smash patty, American cheese, pickles and house sauce on a toasted bun.',
       ilustracao: { tipo: 'hamburguer', camadas: ['pao-topo', 'molho', 'picles', 'queijo', 'carne', 'pao-base'] },
       precos: [
-        { rotulo: 'Single', valor: 4.99 },
-        { rotulo: 'Double', valor: 7.49 },
-        { rotulo: 'Triple', valor: 10.99 },
-        { rotulo: 'Quad', valor: 13.79 }
+        { rotulo: 'Single', valor: 7.49 },
+        { rotulo: 'Double', valor: 10.34 },
+        { rotulo: 'Triple', valor: 13.79 }
       ]
     },
     {
       nome: 'Layup Burger',
-      descricao: 'Double smash, crispy bacon, cheddar, lettuce and smoky BBQ sauce.',
-      ilustracao: { tipo: 'hamburguer', camadas: ['pao-topo', 'molho', 'alface', 'bacon', 'queijo', 'carne', 'queijo', 'carne', 'pao-base'] },
+      descricao: 'Double smash, crispy bacon, lettuce, tomato and smoky BBQ sauce.',
+      ilustracao: { tipo: 'hamburguer', camadas: ['pao-topo', 'molho', 'alface', 'tomate', 'bacon', 'queijo', 'carne', 'queijo', 'carne', 'pao-base'] },
       precos: [
         { rotulo: 'Single', valor: 9.19 },
         { rotulo: 'Double', valor: 13.79 },

@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Buzzer Beater Burgers</title>
   <meta name="description" content="Smash burgers, crispy fries and overtime shakes. Order for pickup or delivery.">
-  <meta name="theme-color" content="#0c0b0a">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
   <header class="topo">
     <a class="marca" href="#inicio" aria-label="Home">
-      <span class="marca-logo" data-ilustracao="logo"></span>
+      <img class="marca-logo" src="/favicon.svg" alt="" width="34" height="34">
       <span class="marca-nome" data-marca="nome"></span>
     </a>
     <nav class="menu-topo" aria-label="Main">
@@ -23,80 +22,85 @@
       <a href="#conceito">Concept</a>
       <a href="#local">Location</a>
     </nav>
-    <a class="botao botao-laranja botao-topo" data-pedido href="#menu">Order now</a>
+    <button type="button" class="botao-sacola" data-abrir-sacola aria-label="Open bag">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Zm3 0a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span class="sacola-contador" data-contador hidden>0</span>
+    </button>
+    <a class="botao botao-laranja botao-topo" href="#menu">Order now</a>
   </header>
 
+  <canvas class="palco" data-palco aria-hidden="true"></canvas>
+  <div class="rotulos" data-rotulos aria-hidden="true"></div>
+
   <main>
-    <section class="hero" id="inicio">
-      <div class="hero-texto">
-        <p class="sobretitulo"><span class="regua"></span><span data-marca="nome"></span></p>
-        <h1 class="titulo-hero">
-          <span class="linha"><span>Build like</span></span>
-          <span class="linha"><span>an All-Star.</span></span>
-        </h1>
-        <p class="hero-sub">Smash burgers pressed to order. Crispy edges, melted American cheese, buttery toasted buns.</p>
-        <div class="hero-acoes">
-          <a class="botao botao-laranja" data-pedido href="#menu">Order now</a>
-          <a class="botao botao-cinza" href="#menu">View menu</a>
+    <section class="experiencia" id="inicio" data-experiencia>
+      <span class="ancora" id="conceito" aria-hidden="true"></span>
+      <div class="experiencia-fixa">
+        <div class="painel painel-heroi" data-painel="heroi">
+          <p class="sobretitulo"><span class="regua"></span><span data-marca="nome"></span></p>
+          <h1 class="titulo-heroi">
+            <span class="linha"><span>Built like</span></span>
+            <span class="linha"><span>an All-Star.</span></span>
+          </h1>
+          <p class="painel-texto">Smash burgers pressed to order. Crispy edges, melted American cheese, buttery toasted buns.</p>
+          <div class="acoes">
+            <a class="botao botao-laranja" href="#menu">Order now</a>
+            <a class="botao botao-cinza" href="#menu">View menu</a>
+          </div>
+          <p class="selo-aberto"><span class="ponto"></span><span data-contato="horarioCurto"></span></p>
         </div>
-        <p class="selo-aberto"><span class="ponto"></span><span data-contato="horarioCurto"></span></p>
-      </div>
-      <div class="hero-arte" data-ilustracao="hero"></div>
-    </section>
 
-    <section class="pilha" id="conceito" data-pilha>
-      <div class="pilha-fixa">
-        <div class="pilha-texto">
-          <span class="regua regua-escura"></span>
-          <h2 class="titulo-secao titulo-fantasma" data-revelar>The Stack</h2>
-          <p data-revelar>Six layers. Zero shortcuts. Every burger is built in the same order, every single time.</p>
+        <div class="painel painel-direita" data-painel="smash">
+          <span class="regua"></span>
+          <h2 class="titulo-painel">Smashed<br>to order</h2>
+          <p class="painel-texto">A screaming-hot flat-top, a hard press and a crispy lace edge. Two slices of American, caramelized onions and house sauce on a buttery bun.</p>
         </div>
-        <div class="pilha-arte" data-ilustracao="pilha"></div>
+
+        <div class="painel painel-esquerda painel-claro" data-painel="pilha">
+          <span class="regua"></span>
+          <h2 class="titulo-painel">The Stack</h2>
+          <p class="painel-texto">Six layers. Zero shortcuts. Built in the same order, every single time.</p>
+        </div>
+
+        <div class="painel painel-direita" data-painel="combo">
+          <span class="regua"></span>
+          <h2 class="titulo-painel">Game Day<br>Combo</h2>
+          <p class="painel-texto">Burger, fries, two house dips and an Overtime Shake, packed fresh for pickup or delivery.</p>
+          <a class="botao botao-laranja" href="#menu">Order the combo</a>
+        </div>
+
+        <div class="painel painel-esquerda" data-painel="shakes">
+          <span class="regua"></span>
+          <h2 class="titulo-painel">Overtime<br>Shakes</h2>
+          <p class="painel-texto">Thick, hand-spun and finished with whipped cream and a cherry. Vanilla, chocolate or strawberry.</p>
+        </div>
+
+        <div class="dica" data-dica>
+          <span class="dica-mouse" aria-hidden="true"></span>
+          <span>Scroll to build · drag the burger to spin</span>
+        </div>
+        <div class="progresso" aria-hidden="true"><span data-progresso></span></div>
       </div>
     </section>
 
-    <section class="combo">
-      <div class="combo-arte" data-ilustracao="caixa-aberta" data-revelar></div>
-      <div class="combo-texto">
-        <span class="regua"></span>
-        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Game Day Combo</h2>
-        <p data-revelar>Burger, fries, house dip and an Overtime Shake, packed fresh for pickup or delivery.</p>
-        <a class="botao botao-laranja" data-pedido href="#menu" data-revelar>Order the combo</a>
-      </div>
-    </section>
-
-    <section class="shakes">
-      <div class="shakes-texto">
-        <span class="regua"></span>
-        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Overtime Shakes</h2>
-        <p data-revelar>Thick, hand-spun and finished with whipped cream. Vanilla, chocolate or strawberry, always worth the extra period.</p>
-      </div>
-      <div class="shakes-arte" data-ilustracao="caixa-fechada" data-revelar></div>
-    </section>
-
-    <section class="cardapio" id="menu">
-      <header class="cardapio-topo">
-        <span class="regua regua-escura"></span>
-        <h2 class="titulo-secao titulo-fantasma" data-revelar>The Menu</h2>
-        <p data-revelar>Every burger is smashed to order. Prices before tax.</p>
+    <section class="lineup" id="menu">
+      <header class="lineup-topo">
+        <h2 class="titulo-secao" data-revelar>The Lineup.</h2>
+        <p data-revelar>Every burger is smashed to order. Tap + to add a size to your bag.</p>
       </header>
-      <div class="cardapio-grade" data-cardapio></div>
+      <div class="lineup-grade" data-cardapio></div>
     </section>
 
     <div class="faixa" aria-hidden="true"><div class="faixa-trilho" data-faixa></div></div>
 
     <section class="local" id="local">
-      <div class="local-topo">
-        <span class="regua"></span>
-        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Find the court</h2>
-      </div>
+      <h2 class="titulo-secao titulo-claro" data-revelar>Find the court</h2>
       <dl class="local-grade">
         <div data-revelar><dt>Address</dt><dd data-contato="endereco"></dd></div>
         <div data-revelar><dt>Hours</dt><dd data-contato="horario"></dd></div>
         <div data-revelar><dt>Phone</dt><dd data-contato="telefone"></dd></div>
         <div data-revelar><dt>Email</dt><dd data-contato="email"></dd></div>
       </dl>
-      <a class="botao botao-laranja" data-pedido href="#menu">Order now</a>
     </section>
   </main>
 
@@ -105,11 +109,21 @@
     <span data-marca="slogan"></span>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/arte/base.js"></script>
-  <script src="js/arte/hamburguer.js"></script>
-  <script src="js/arte/comida.js"></script>
-  <script src="js/arte/cenas.js"></script>
-  <script src="js/main.js"></script>
+  <div class="sacola" data-sacola aria-hidden="true">
+    <aside class="sacola-painel" role="dialog" aria-label="Your bag">
+      <header>
+        <h2>Your bag</h2>
+        <button type="button" class="sacola-fechar" data-sacola-fechar aria-label="Close bag">×</button>
+      </header>
+      <ul class="sacola-lista" data-sacola-lista></ul>
+      <footer>
+        <p><span>Total</span><strong data-sacola-total></strong></p>
+        <a class="botao botao-laranja" data-sacola-finalizar href="#menu" rel="noopener">Checkout</a>
+      </footer>
+    </aside>
+  </div>
+  <p class="aviso" data-aviso role="status" aria-live="polite"></p>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

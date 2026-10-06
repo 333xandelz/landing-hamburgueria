@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buzzer Beater Burgers</title>
+  <meta name="description" content="Smash burgers, crispy fries and overtime shakes. Order for pickup or delivery.">
+  <meta name="theme-color" content="#0c0b0a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="#inicio" aria-label="Home">
+      <span class="marca-logo" data-ilustracao="logo"></span>
+      <span class="marca-nome" data-marca="nome"></span>
+    </a>
+    <nav class="menu-topo" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#conceito">Concept</a>
+      <a href="#local">Location</a>
+    </nav>
+    <a class="botao botao-laranja botao-topo" data-pedido href="#menu">Order now</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-texto">
+        <p class="sobretitulo"><span class="regua"></span><span data-marca="nome"></span></p>
+        <h1 class="titulo-hero">
+          <span class="linha"><span>Build like</span></span>
+          <span class="linha"><span>an All-Star.</span></span>
+        </h1>
+        <p class="hero-sub">Smash burgers pressed to order. Crispy edges, melted American cheese, buttery toasted buns.</p>
+        <div class="hero-acoes">
+          <a class="botao botao-laranja" data-pedido href="#menu">Order now</a>
+          <a class="botao botao-cinza" href="#menu">View menu</a>
+        </div>
+        <p class="selo-aberto"><span class="ponto"></span><span data-contato="horarioCurto"></span></p>
+      </div>
+      <div class="hero-arte" data-ilustracao="hero"></div>
+    </section>
+
+    <section class="pilha" id="conceito" data-pilha>
+      <div class="pilha-fixa">
+        <div class="pilha-texto">
+          <span class="regua regua-escura"></span>
+          <h2 class="titulo-secao titulo-fantasma" data-revelar>The Stack</h2>
+          <p data-revelar>Six layers. Zero shortcuts. Every burger is built in the same order, every single time.</p>
+        </div>
+        <div class="pilha-arte" data-ilustracao="pilha"></div>
+      </div>
+    </section>
+
+    <section class="combo">
+      <div class="combo-arte" data-ilustracao="caixa-aberta" data-revelar></div>
+      <div class="combo-texto">
+        <span class="regua"></span>
+        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Game Day Combo</h2>
+        <p data-revelar>Burger, fries, house dip and an Overtime Shake, packed fresh for pickup or delivery.</p>
+        <a class="botao botao-laranja" data-pedido href="#menu" data-revelar>Order the combo</a>
+      </div>
+    </section>
+
+    <section class="shakes">
+      <div class="shakes-texto">
+        <span class="regua"></span>
+        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Overtime Shakes</h2>
+        <p data-revelar>Thick, hand-spun and finished with whipped cream. Vanilla, chocolate or strawberry, always worth the extra period.</p>
+      </div>
+      <div class="shakes-arte" data-ilustracao="caixa-fechada" data-revelar></div>
+    </section>
+
+    <section class="cardapio" id="menu">
+      <header class="cardapio-topo">
+        <span class="regua regua-escura"></span>
+        <h2 class="titulo-secao titulo-fantasma" data-revelar>The Menu</h2>
+        <p data-revelar>Every burger is smashed to order. Prices before tax.</p>
+      </header>
+      <div class="cardapio-grade" data-cardapio></div>
+    </section>
+
+    <div class="faixa" aria-hidden="true"><div class="faixa-trilho" data-faixa></div></div>
+
+    <section class="local" id="local">
+      <div class="local-topo">
+        <span class="regua"></span>
+        <h2 class="titulo-secao titulo-fantasma titulo-claro" data-revelar>Find the court</h2>
+      </div>
+      <dl class="local-grade">
+        <div data-revelar><dt>Address</dt><dd data-contato="endereco"></dd></div>
+        <div data-revelar><dt>Hours</dt><dd data-contato="horario"></dd></div>
+        <div data-revelar><dt>Phone</dt><dd data-contato="telefone"></dd></div>
+        <div data-revelar><dt>Email</dt><dd data-contato="email"></dd></div>
+      </dl>
+      <a class="botao botao-laranja" data-pedido href="#menu">Order now</a>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <span>© <span data-ano></span> <span data-marca="nome"></span></span>
+    <span data-marca="slogan"></span>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/arte/base.js"></script>
+  <script src="js/arte/hamburguer.js"></script>
+  <script src="js/arte/comida.js"></script>
+  <script src="js/arte/cenas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
